@@ -1,7 +1,6 @@
 name: Rector
 
 on:
-  push: null
   pull_request: null
 
 jobs:
