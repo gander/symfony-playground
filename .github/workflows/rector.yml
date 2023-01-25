@@ -25,3 +25,4 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           title: "[ci-review]"
+          token: ${{ secrets.PR_PAT }}
