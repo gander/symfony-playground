@@ -1,7 +1,6 @@
 name: Rector
 
 on:
-  push: null
   pull_request: null
 
 jobs:
@@ -10,13 +9,6 @@ jobs:
 
     steps:
       #- uses: actions/checkout@v3
-      - if: github.event_name == 'push'
-        uses: actions/checkout@v3
-
-      - if: github.event_name == 'pull_request'
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
 
       - uses: shivammathur/setup-php@v2
         with:
