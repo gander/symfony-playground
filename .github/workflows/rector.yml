@@ -8,7 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - run: echo "${{ github.event.pull_request.head.ref }}"
       - uses: actions/checkout@v3
+        with:
+          token: ${{ SECRETS.PR_PAT }}
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - uses: shivammathur/setup-php@v2
         with:
@@ -22,7 +26,4 @@ jobs:
       - name: Easy Coding Standard - Fix
         run: vendor/bin/ecs check --fix --ansi
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          token: ${{ secrets.PR_PAT }}
+      - uses: EndBug/add-and-commit@v9
